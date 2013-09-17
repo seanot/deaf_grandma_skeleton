@@ -10,16 +10,15 @@ post '/grandma' do
 
   if params[:user_input] == "Sorry grandma, gotta go"
     @grandma = "wait, come back!"
+    # erb :result
     redirect to('/?grandma=wait, come back!')
-    erb :result
   elsif params[:user_input] == response.upcase
     @grandma = "NOT SINCE 1938!"
     redirect to('/?grandma=NOT SINCE 1938!')
-    erb :index
+    # erb :index
   else 
     @grandma = "SPEAK UP, SONNY!"
     redirect to('/?grandma=SPEAK UP, SONNY!')
-    erb :index
+    # erb :index
   end
 end
-
