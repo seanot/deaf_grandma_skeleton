@@ -1,7 +1,30 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+    // bind to form submission
+    $('#grandma').submit(function(event){
+        // preventDefault
+        event.preventDefault();
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+        // get url and data from form
+        var url = $(this).attr('action');
+        var data = $(this).serialize();
+
+        // post url and data
+        $.post(url, data, function(response){
+            // receive data back from server
+            // parse desired data from returned data
+            var p = $(response).find('p');
+
+            // remove existing paragraphs
+            $('p').remove();
+            
+            // add paragraph from response
+            $('h1').after(p);
+
+        });
+
+        // clear the form
+        this.reset();
+
+    })
+
 });
